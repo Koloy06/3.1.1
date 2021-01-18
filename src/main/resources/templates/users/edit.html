@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update user</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/admin/users/{id}(id=${user.getId()})}" th:object="${user}">
+    <legend>Update user</legend>
+    <div>
+        <label for="username">Username</label>
+        <input id="username" type="text" th:field="*{username}">
+    </div>
+    <div>
+        <label for="password">Surname</label>
+        <input id="password" type="text" th:field="*{password}">
+    </div>
+    <div>
+        <label for="mail">Mail</label>
+        <input id="mail" type="text" th:field="*{mail}">
+    </div>
+    <div>
+        <label for="age">Age</label>
+        <input id="age" type="text" th:field="*{age}">
+    </div>
+    <div>
+        <input type="submit" value="Update">
+    </div>
+</form>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

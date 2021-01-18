@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Add</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/admin/users}" th:object="${user}">
+    <legend>Add user in base</legend>
+    <div>
+        <label for="username">Username</label>
+        <input id="username" type="text" th:field="*{username}">
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input id="password" type="text" th:field="*{password}">
+    </div>
+    <div>
+        <label for="mail">Mail</label>
+        <input id="mail" type="text" th:field="*{mail}">
+    </div>
+    <div>
+        <label for="age">Age</label>
+        <input id="age" type="text" th:field="*{age}">
+    </div>
+    <div>
+        <input type="submit" value="Create">
+    </div>
+</form>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Mail</th>
+        <th>Age</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user, iterStat : ${users}"
+        th:style="${iterStat.odd}? 'font-weight: bold;'">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.mail}"></td>
+        <td th:text="${user.age}"></td>
+        <td>
+            <form th:action="@{/admin/users/edit/{id}(id=${user.id})}">
+                <button type="submit">Edit</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/admin/users/delete/{id}(id=${user.id})}" th:method="POST" >
+                <input type="hidden" name="id" value="DELETE" />
+                <button type="submit" id="submitButton">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/admin/users/new">Add User</a><br>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
